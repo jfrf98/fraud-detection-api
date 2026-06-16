@@ -23,6 +23,38 @@ In this project, I built an end-to-end ML system that:
 
 ---
 
+## Live Demo
+
+The API is deployed publicly on Render:
+
+```text
+https://fraud-detection-api-1b5j.onrender.com
+```
+
+Interactive API documentation:
+
+```text
+https://fraud-detection-api-1b5j.onrender.com/docs
+```
+
+Main endpoints:
+
+```text
+GET  /
+GET  /health
+GET  /model-info
+GET  /stats
+GET  /metrics
+GET  /logs/recent
+POST /predict
+```
+
+> Note: If the service has been inactive, the first request may take a few seconds to respond.
+
+---
+
+
+---
 ## Business Problem
 
 In fraud detection, the cost of missing a fraudulent transaction can be high. Therefore, accuracy is not the most relevant metric.
@@ -357,6 +389,7 @@ fraud-detection-api/
 * Uvicorn
 * Joblib
 * Docker
+* Render
 * Git / GitHub
 
 ---
@@ -427,14 +460,26 @@ docker build -t fraud-detection-api .
 ### 2. Run the container
 
 ```bash
-docker run -p 8000:8000 fraud-detection-api
+docker run -p 8000:10000 fraud-detection-api
 ```
+The container listens internally on port `10000` to align with the deployment configuration.
 
 Open:
 
 ```text
 http://localhost:8000/docs
 ```
+
+## Deployment
+
+The API is deployed on Render using Docker.
+
+Production URL:
+
+```text
+https://fraud-detection-api-1b5j.onrender.com
+
+https://fraud-detection-api-1b5j.onrender.com/docs
 
 ---
 
@@ -498,6 +543,7 @@ This adds a basic observability layer for inference monitoring and debugging.
 * Dockerized deployment-ready API.
 * Clean project structure.
 * Git/GitHub version control.
+* Cloud deployment with Render
 
 ---
 
@@ -505,12 +551,12 @@ This adds a basic observability layer for inference monitoring and debugging.
 
 Planned improvements:
 
-* Deploy API publicly using Render.
 * Add automated tests.
 * Add CI/CD with GitHub Actions.
 * Add a Streamlit dashboard for monitoring.
 * Add model explainability with SHAP.
 * Add batch prediction endpoint.
+* Add persistent storage for production inference logs.
 
 ---
 
