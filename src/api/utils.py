@@ -22,6 +22,8 @@ def log_prediction(
     model_version: str,
     log_file: Path
 ) -> None:
+    log_file.parent.mkdir(parents=True, exist_ok=True)
+    
     file_exists = log_file.exists()
 
     with open(log_file, mode="a", newline="") as file:
