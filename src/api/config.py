@@ -1,0 +1,3 @@
+MODEL_VERSION = "v2-random-forest"
+FEATURE_COUNT = 30
+FRAUD_THRESHOLD = 0.5
